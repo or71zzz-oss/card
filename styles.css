@@ -1,0 +1,260 @@
+:root {
+  --bg-1: #06141f;
+  --bg-2: #0d2a3a;
+  --card: rgba(14, 28, 40, 0.72);
+  --line: rgba(160, 230, 220, 0.22);
+  --mint: #7ee8d4;
+  --mint-2: #3ecfb8;
+  --gold: #f3d27a;
+  --text: #f4fbff;
+  --muted: #9cb3bf;
+  --shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "IBM Plex Sans KR", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #16384a 0%, transparent 55%),
+    radial-gradient(900px 500px at 110% 10%, #1d4d46 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+  overflow-x: hidden;
+}
+
+.stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px 48px;
+  perspective: 1200px;
+}
+
+.card {
+  width: min(420px, 100%);
+  position: relative;
+  padding: 32px 28px 24px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 28%),
+    var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.2s ease;
+}
+
+.card__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(420px 180px at var(--mx, 50%) var(--my, 0%), rgba(126, 232, 212, 0.18), transparent 55%);
+  opacity: 0.9;
+}
+
+.card__header {
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+}
+
+.avatar-wrap {
+  position: relative;
+  width: 176px;
+  height: 176px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid rgba(126, 232, 212, 0.7);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 0 8px rgba(126, 232, 212, 0.08);
+}
+
+.avatar {
+  width: 176px;
+  height: 176px;
+  object-fit: cover;
+  object-position: 52% 12%;
+  transform: scale(1.85);
+  transform-origin: 50% 12%;
+  background: #13313d;
+}
+
+.status {
+  position: absolute;
+  right: -6px;
+  bottom: 10px;
+  z-index: 1;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #12362f;
+  color: var(--mint);
+  border: 1px solid rgba(126, 232, 212, 0.4);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.card__body {
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: Outfit, "IBM Plex Sans KR", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.name {
+  font-size: 36px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.role {
+  margin-top: 8px;
+  color: var(--mint);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tagline {
+  margin: 14px auto 0;
+  max-width: 32ch;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 15px;
+}
+
+.contacts {
+  list-style: none;
+  margin-top: 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.contacts a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.contacts a:hover {
+  transform: translateY(-1px);
+  background: rgba(126, 232, 212, 0.08);
+  border-color: rgba(126, 232, 212, 0.28);
+}
+
+.contacts a.youtube .icon {
+  background: rgba(255, 70, 70, 0.16);
+  color: #ff6b6b;
+}
+
+.contacts a.youtube:hover {
+  background: rgba(255, 70, 70, 0.1);
+  border-color: rgba(255, 107, 107, 0.35);
+}
+
+.contacts small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(126, 232, 212, 0.12);
+  color: var(--mint-2);
+  flex-shrink: 0;
+}
+
+.card__footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.card__footer button {
+  flex: 1;
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 10px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tilt-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.copy-btn {
+  background: linear-gradient(135deg, var(--mint), #2aa894);
+  color: #05211c;
+}
+
+.hint {
+  margin-top: 18px;
+  color: rgba(244, 251, 255, 0.55);
+  font-size: 13px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(16px);
+  background: #10242d;
+  color: var(--mint);
+  border: 1px solid rgba(126, 232, 212, 0.35);
+  padding: 10px 16px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 26px 18px 20px;
+  }
+
+  .name {
+    font-size: 30px;
+  }
+
+  .card__footer {
+    flex-direction: column;
+  }
+}
